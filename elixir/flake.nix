@@ -48,10 +48,11 @@
               [
                 elixir
                 elixir-ls
-                openssl
-                pkg-config
               ]
-              ++ pkgs.stdenv.isLinux [ inotify-tools ];
+              ++
+              pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
+                inotify-tools
+              ]);
             shellHook = ''
               if ! ps aux | grep -q '[z]ellij'; then
                 zellij -l ${layoutFile}
