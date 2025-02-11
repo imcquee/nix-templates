@@ -3,4 +3,4 @@ Nix Development Shell Templates
 
 ## Usage
 
-nix flake init -t github:imcquee/nix-templates/elixir
+`nix flake init -t github:imcquee/nix-templates/elixir`
