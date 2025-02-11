@@ -43,7 +43,15 @@
         in
         {
           default = pkgs.mkShell {
-            packages = with pkgs; [ cowsay ];
+            packages =
+              with pkgs;
+              [
+                elixir
+                elixir-ls
+                openssl
+                pkg-config
+              ]
+              ++ pkgs.stdenv.isLinux [ inotify-tools ];
             shellHook = ''
               if ! ps aux | grep -q '[z]ellij'; then
                 zellij -l ${layoutFile}
