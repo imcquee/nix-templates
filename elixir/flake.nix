@@ -46,6 +46,10 @@
             packages =
               with pkgs;
               [
+                ps
+                zellij
+                yazi
+                helix
                 elixir
                 elixir-ls
               ]
