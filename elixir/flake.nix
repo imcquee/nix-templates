@@ -52,6 +52,7 @@
                 helix
                 elixir
                 elixir-ls
+                git
               ]
               ++
               pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
