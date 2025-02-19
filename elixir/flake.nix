@@ -10,6 +10,17 @@
     in
     {
       devShells = forAllSystems ({ pkgs }:
+        let
+          layoutFile = pkgs.writeText "layout.kdl" ''
+            pane_frames false
+            layout {
+              pane {
+                command "hx"
+                args "."
+              }
+            }
+          '';
+        in
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
@@ -18,6 +29,9 @@
             ] ++ lib.optionals stdenv.isLinux [ inotify-tools ];
 
             shellHook = ''
+              if [ -z "$ZELLIJ" ] || [ "$ZELLIJ" -ne 0 ]; then
+                zellij -l ${layoutFile}
+              fi
             '';
           };
         });
