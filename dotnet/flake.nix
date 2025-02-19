@@ -10,15 +10,29 @@
     in
     {
       devShells = forAllSystems ({ pkgs }:
+        let
+          layoutFile = pkgs.writeText "layout.kdl" ''
+            pane_frames false
+            layout {
+              pane {
+                command "hx"
+                args "."
+              }
+            }
+          '';
+        in
         {
           default = pkgs.mkShell {
-            packages = with pkgs;
-              [
-                dotnetCorePackages.sdk_9_0
-                omnisharp-roslyn
-                netcoredbg
-              ];
+            packages = with pkgs; [
+              dotnetCorePackages.sdk_9_0
+              omnisharp-roslyn
+              netcoredbg
+            ];
+
             shellHook = ''
+              if [ -z "$ZELLIJ" ] || [ "$ZELLIJ" -ne 0 ]; then
+                zellij -l ${layoutFile}
+              fi
             '';
           };
         });

@@ -10,20 +10,32 @@
     in
     {
       devShells = forAllSystems ({ pkgs }:
+        let
+          layoutFile = pkgs.writeText "layout.kdl" ''
+            pane_frames false
+            layout {
+              pane {
+                command "hx"
+                args "."
+              }
+            }
+          '';
+        in
         {
           default = pkgs.mkShell {
-            packages = with pkgs;
-
-              [
-                gleam
-                erlang_27
-                rebar3
-              ]
-              ++
-              pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
-                inotify-tools
-              ]);
+            packages = with pkgs; [
+              gleam
+              erlang_27
+              rebar3
+            ]
+            ++
+            pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
+              inotify-tools
+            ]);
             shellHook = ''
+              if [ -z "$ZELLIJ" ] || [ "$ZELLIJ" -ne 0 ]; then
+                zellij -l ${layoutFile}
+              fi
             '';
           };
         });
