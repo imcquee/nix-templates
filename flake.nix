@@ -3,6 +3,10 @@
   outputs = { self }:
     {
       templates = {
+        editor = {
+          path = ./editor;
+          description = "IDE consisting of Helix, Zellij, Yazi";
+        };
         elixir = {
           path = ./elixir;
           description = "Elixir development environment";
