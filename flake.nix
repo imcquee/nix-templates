@@ -3,6 +3,10 @@
   outputs = { self }:
     {
       templates = {
+        basic = {
+          path = ./basic;
+          description = "Basic Flake";
+        };
         editor = {
           path = ./editor;
           description = "IDE consisting of Helix, Zellij, Yazi";
