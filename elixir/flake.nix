@@ -12,7 +12,6 @@
       devShells = forAllSystems ({ pkgs }:
         let
           layoutFile = pkgs.writeText "layout.kdl" ''
-            pane_frames false
             layout {
               pane {
                 command "hx"
