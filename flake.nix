@@ -7,6 +7,10 @@
           path = ./basic;
           description = "Basic Flake";
         };
+        dotnet = {
+          path = ./dotnet;
+          description = "Dotnet development environment";
+        };
         editor = {
           path = ./editor;
           description = "IDE consisting of Helix, Zellij, Yazi";
@@ -15,13 +19,13 @@
           path = ./elixir;
           description = "Elixir development environment";
         };
-        dotnet = {
-          path = ./dotnet;
-          description = "Dotnet development environment";
-        };
         gleam = {
           path = ./gleam;
           description = "Gleam development environment";
+        };
+        scala = {
+          path = ./scala;
+          description = "Scala development environment";
         };
         typescript = {
           path = ./typescript;
