@@ -23,13 +23,13 @@
           path = ./gleam;
           description = "Gleam development environment";
         };
-        scala = {
-          path = ./scala;
-          description = "Scala development environment";
-        };
         typescript = {
           path = ./typescript;
           description = "Typescript development environment";
+        };
+        services = {
+          path = ./services;
+          description = "Services example with Postgres";
         };
       };
     };
