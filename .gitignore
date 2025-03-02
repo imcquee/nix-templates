@@ -1,3 +1,4 @@
 !.envrc
 **/flake.lock
 !/flake.lock
+.DS_Store
