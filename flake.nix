@@ -29,7 +29,7 @@
           description = "Typescript development environment";
         };
         postgres = {
-          path = ./services/postgres;
+          path = ./postgres;
           description = "Services example with Postgres";
         };
       };
