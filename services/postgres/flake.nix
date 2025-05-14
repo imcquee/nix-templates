@@ -1,5 +1,5 @@
 {
-  description = "Portabl Postgres service";
+  description = "Postgres service flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     process-compose-flake.url = "github:Platonic-Systems/process-compose-flake";
@@ -25,7 +25,7 @@
           system:
           let
             pkgs = import nixpkgs { inherit system; };
-            dbName = "default";
+            dbName = "project";
             servicesMod = (import process-compose-flake.lib { inherit pkgs; }).evalModules {
               modules = [
                 services-flake.processComposeModules.default
@@ -34,12 +34,13 @@
                   {
                     services.postgres."pg1" = {
                       enable = true;
-                      dataDir = "./.databases";
-                      initialDatabases = [
-                        {
-                          name = dbName;
-                        }
-                      ];
+                      dataDir = "./.databases/pg1";
+                      initialScript.before = ''
+                        CREATE DATABASE ${dbName};
+                        CREATE USER dev WITH password 'dev';
+                        GRANT ALL PRIVILEGES ON DATABASE ${dbName} TO dev;
+                        ALTER DATABASE ${dbName} OWNER TO dev;
+                      '';
                     };
                     settings.processes.pgweb =
                       let
