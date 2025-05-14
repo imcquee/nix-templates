@@ -1,6 +1,7 @@
 {
   description = "Nix Development Templates";
-  outputs = { self }:
+  outputs =
+    { self }:
     {
       templates = {
         basic = {
@@ -27,8 +28,8 @@
           path = ./typescript;
           description = "Typescript development environment";
         };
-        services = {
-          path = ./services;
+        postgres = {
+          path = ./services/postgres;
           description = "Services example with Postgres";
         };
       };
