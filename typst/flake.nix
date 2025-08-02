@@ -10,16 +10,6 @@
     in
     {
       devShells = forAllSystems ({ pkgs }:
-        let
-          layoutFile = pkgs.writeText "layout.kdl" ''
-            layout {
-              pane {
-                command "hx"
-                args "."
-              }
-            }
-          '';
-        in
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
@@ -27,12 +17,6 @@
               zathura
               pandoc
             ];
-
-            shellHook = ''
-              if [ -z "$ZELLIJ" ] || [ "$ZELLIJ" -ne 0 ]; then
-                zellij -l ${layoutFile}
-              fi
-            '';
           };
         });
     };
