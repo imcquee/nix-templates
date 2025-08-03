@@ -6,11 +6,10 @@
     services-flake.url = "github:juspay/services-flake";
   };
   outputs =
-    {
-      nixpkgs,
-      process-compose-flake,
-      services-flake,
-      ...
+    { nixpkgs
+    , process-compose-flake
+    , services-flake
+    , ...
     }:
     let
       supportedSystems = [
@@ -24,7 +23,7 @@
         nixpkgs.lib.genAttrs supportedSystems (
           system:
           let
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = nixpkgs.legacyPackages.${system};
             dbName = "project";
             servicesMod = (import process-compose-flake.lib { inherit pkgs; }).evalModules {
               modules = [
