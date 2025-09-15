@@ -14,7 +14,7 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               gleam
-              erlang_27
+              erlang_28
               rebar3
             ]
             ++
