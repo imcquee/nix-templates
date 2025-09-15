@@ -21,6 +21,9 @@
             pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
               inotify-tools
             ]);
+            shellHook = ''
+              gleam --version
+            '';
           };
         });
     };
