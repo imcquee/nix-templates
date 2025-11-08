@@ -32,6 +32,10 @@
           path = ./services/postgres;
           description = "Services example with Postgres";
         };
+        golang = {
+          path = ./golang;
+          description = "Golang development environment";
+        };
       };
     };
 }
