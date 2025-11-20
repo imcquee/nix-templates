@@ -28,6 +28,10 @@
           path = ./typescript;
           description = "Typescript development environment";
         };
+        rust = {
+          path = ./rust;
+          description = "Rust development environment";
+        };
         postgres = {
           path = ./services/postgres;
           description = "Services example with Postgres";
