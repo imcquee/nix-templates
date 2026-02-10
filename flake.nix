@@ -40,6 +40,10 @@
           path = ./golang;
           description = "Golang development environment";
         };
+        python = {
+          path = ./python;
+          description = "Python development environment";
+        };
       };
     };
 }
