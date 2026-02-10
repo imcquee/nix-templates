@@ -26,6 +26,8 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               uv
+              ruff
+              ty
               python3
             ];
             shellHook = "";
