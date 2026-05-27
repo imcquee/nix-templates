@@ -8,6 +8,10 @@
           path = ./basic;
           description = "Basic Flake";
         };
+        react-native = {
+          path = ./react-native;
+          description = "React Native development environment";
+        };
         dotnet = {
           path = ./dotnet;
           description = "Dotnet development environment";
