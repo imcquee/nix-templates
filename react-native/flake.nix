@@ -24,9 +24,12 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               bun
+              nodejs
               eas-cli
               typescript-language-server
               vscode-langservers-extracted
+              jdt-language-server
+              jdk17
               cocoapods
               sd
               fastlane
@@ -35,6 +38,7 @@
             shellHook = ''
               export PATH=$(echo $PATH | sd "${pkgs.xcbuild.xcrun}/bin" "")
               unset DEVELOPER_DIR
+              export JAVA_HOME="${pkgs.jdk17.home}"
             '';
           };
         }

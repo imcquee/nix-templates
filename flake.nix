@@ -12,6 +12,10 @@
           path = ./react-native;
           description = "React Native development environment";
         };
+        expo = {
+          path = ./expo;
+          description = "Expo development environment (Node.js)";
+        };
         dotnet = {
           path = ./dotnet;
           description = "Dotnet development environment";
